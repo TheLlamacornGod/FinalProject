@@ -3,6 +3,8 @@ package edu.neumont.csc150.finalproject;
 import javax.swing.JPanel;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
@@ -10,8 +12,11 @@ public class WindowStartScreen extends JPanel{
 
 	private ImageComponent background;
 	private JButton start, credits, exit;
+	private Game game;
 	
-	public WindowStartScreen() {
+	public WindowStartScreen(Game game) {
+
+		this.game = game;
 		
 		this.setLayout(null);
 		
@@ -23,27 +28,45 @@ public class WindowStartScreen extends JPanel{
 		start.setFont(new Font("SansSerif", 1, 30));
 		start.setContentAreaFilled(false);
 		start.setLocation((background.getWidth()/2) - (start.getWidth()/2), (background.getHeight()/2) - (start.getHeight()/2));
-
+		start.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.buttonPressed(1);
+			}
+		});
+		
 		credits = new JButton("Credits");
 		credits.setSize(140, 50);
 		credits.setFont(new Font("SansSerif", 1, 30));
 		credits.setContentAreaFilled(false);
 		credits.setLocation((background.getWidth()/2) - (credits.getWidth()/2), start.getY() + credits.getHeight());
+		credits.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.buttonPressed(2);
+			}
+		});
 		
 		exit = new JButton("Exit");
 		exit.setSize(110, 50);
 		exit.setFont(new Font("SansSerif", 1, 30));
 		exit.setContentAreaFilled(false);
 		exit.setLocation((background.getWidth()/2) - (exit.getWidth()/2), credits.getY() + exit.getHeight());
+		exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.buttonPressed(0);
+			}
+		});
 		
 		this.setSize(background.getWidth(), background.getHeight());
 		this.add(start);
 		this.add(credits);
 		this.add(exit);
 		this.add(background);
-		
-		this.setVisible(true);
 	}
-	
 	
 }
