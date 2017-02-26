@@ -1,7 +1,7 @@
 package edu.neumont.csc150.finalproject;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class WindowDungeon extends JFrame {
+public class WindowDungeon extends JPanel {
 
 }
