@@ -9,9 +9,14 @@ public class Game extends JFrame{
 	
 	public Game() {
 		
-		this.setLayout(null);
-		
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+				
 		startScreen = new WindowStartScreen();
+		startScreen.setLocation(0, 0);
 		
+		this.setSize(startScreen.getSize());
+		this.setContentPane(startScreen);
+		
+		this.setVisible(true);
 	}
 }
