@@ -16,7 +16,7 @@ public class Game extends JFrame{
 		startScreen.setLocation(0, 0);
 		
 		this.setSize(startScreen.getSize());
-		this.setMinimumSize(startScreen.getSize());
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setContentPane(startScreen);
 		

@@ -2,65 +2,29 @@ package edu.neumont.csc150.finalproject;
 
 import javax.swing.JPanel;
 
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-
 public class WindowStartScreen extends JPanel{
 
 	private ImageComponent background;
-	private JButton start, credits, exit;
-	private Game game;
+	private MenuButtons start, credits, exit;
 	
 	public WindowStartScreen(Game game) {
-
-		this.game = game;
 		
 		this.setLayout(null);
 		
 		background = new ImageComponent("Images/StartScreen.jpg");
 		background.setLocation(0, 0);
 		
-		start = new JButton("Start");
+		start = new MenuButtons(game, 1, "Start");
 		start.setSize(110, 50);
-		start.setFont(new Font("SansSerif", 1, 30));
-		start.setContentAreaFilled(false);
 		start.setLocation((background.getWidth()/2) - (start.getWidth()/2), (background.getHeight()/2) - (start.getHeight()/2));
-		start.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.buttonPressed(1);
-			}
-		});
-		
-		credits = new JButton("Credits");
+
+		credits = new MenuButtons(game, 2, "Credits");
 		credits.setSize(140, 50);
-		credits.setFont(new Font("SansSerif", 1, 30));
-		credits.setContentAreaFilled(false);
 		credits.setLocation((background.getWidth()/2) - (credits.getWidth()/2), start.getY() + credits.getHeight());
-		credits.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.buttonPressed(2);
-			}
-		});
 		
-		exit = new JButton("Exit");
+		exit = new MenuButtons(game, 0, "Exit");
 		exit.setSize(110, 50);
-		exit.setFont(new Font("SansSerif", 1, 30));
-		exit.setContentAreaFilled(false);
 		exit.setLocation((background.getWidth()/2) - (exit.getWidth()/2), credits.getY() + exit.getHeight());
-		exit.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				game.buttonPressed(0);
-			}
-		});
 		
 		this.setSize(background.getWidth(), background.getHeight());
 		this.add(start);
