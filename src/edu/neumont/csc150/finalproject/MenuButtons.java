@@ -41,6 +41,7 @@ public class MenuButtons extends JButton {
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 
+				timer.restart();
 				timer.stop();
 				MenuButtons.this.setFont(new Font("SansSerif", 1, 30));
 			}

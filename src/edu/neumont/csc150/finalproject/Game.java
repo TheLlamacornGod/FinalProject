@@ -7,6 +7,10 @@ public class Game extends JFrame{
 	private WindowStartScreen startScreen;
 	private WindowDungeon gameDungeon;
 	private WindowCredits creditsWindow;
+	private WindowCharacterCreation characterCreator;
+	private CharacterPlayer player;
+	
+	// Possible game name : "Fight or Flight Knight"
 	
 	public Game() {
 		
