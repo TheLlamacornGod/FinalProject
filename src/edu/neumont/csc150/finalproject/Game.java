@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class Game extends JFrame{
 	
 	private WindowStartScreen startScreen;
-	private WindowDungeon gameDungeon;
+	private WindowDungeon dungeon;
 	private WindowCredits creditsWindow;
 	private WindowCharacterCreation characterCreator;
 	private CharacterPlayer player;
@@ -33,7 +33,7 @@ public class Game extends JFrame{
 			this.dispose();
 			break;
 		case 1:
-			this.setContentPane(gameDungeon);
+			this.setContentPane(characterCreator);
 			break;
 		case 2:
 			this.setContentPane(creditsWindow);

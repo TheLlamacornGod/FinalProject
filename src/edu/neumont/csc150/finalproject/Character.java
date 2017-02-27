@@ -1,5 +1,19 @@
 package edu.neumont.csc150.finalproject;
 
-public abstract class Character {
+import javax.swing.JPanel;
 
+public abstract class Character extends JPanel {
+	
+	private ImageComponent characterImage;
+	
+	public Character(String location) {
+		
+		this.setLayout(null);
+		
+		characterImage = new ImageComponent(location);
+		characterImage.setLocation(0, 0);
+		
+		this.add(characterImage);
+	}
 }
+ 

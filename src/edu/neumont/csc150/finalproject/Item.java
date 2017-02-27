@@ -2,7 +2,7 @@ package edu.neumont.csc150.finalproject;
 
 import javax.swing.JPanel;
 
-public class Item extends JPanel{
+public abstract class Item extends JPanel {
 	
 	private ImageComponent item;
 	

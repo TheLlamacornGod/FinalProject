@@ -3,7 +3,7 @@ package edu.neumont.csc150.finalproject;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class WindowCredits extends JPanel{
+public class WindowCredits extends JPanel {
 	
 	private Timer timer;
 	private ImageComponent credits;

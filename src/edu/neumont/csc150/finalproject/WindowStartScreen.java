@@ -2,7 +2,7 @@ package edu.neumont.csc150.finalproject;
 
 import javax.swing.JPanel;
 
-public class WindowStartScreen extends JPanel{
+public class WindowStartScreen extends JPanel {
 
 	private ImageComponent background;
 	private MenuButtons start, credits, exit;
