@@ -1,5 +1,7 @@
 package edu.neumont.csc150.finalproject;
 
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 public abstract class Character extends JPanel {
@@ -14,6 +16,8 @@ public abstract class Character extends JPanel {
 		characterImage.setLocation(0, 0);
 		
 		this.add(characterImage);
+		
 	}
+	
 }
  

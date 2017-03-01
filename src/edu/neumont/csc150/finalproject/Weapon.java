@@ -1,6 +1,6 @@
 package edu.neumont.csc150.finalproject;
 
-public class Weapon extends Item implements Equip {
+public class Weapon extends Equipment implements Equip {
 	
 	//Use polymorphism to equip weapons & armor
 	
