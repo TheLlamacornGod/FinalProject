@@ -6,4 +6,9 @@ public class PotionHealth extends Potion {
 		super(location);
 	}
 
+	@Override
+	public void ConsumeItem(Consume consumable) {
+		
+	}
+
 }
