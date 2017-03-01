@@ -7,9 +7,9 @@ public class WindowCredits extends JPanel {
 	
 	private Timer timer;
 	private ImageComponent credits;
-	private Game game;
+	private FrameGame game;
 	
-	public WindowCredits(Game game) {
+	public WindowCredits(FrameGame game) {
 		
 		this.game = game;
 		

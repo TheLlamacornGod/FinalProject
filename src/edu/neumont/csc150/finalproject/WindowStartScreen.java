@@ -7,7 +7,7 @@ public class WindowStartScreen extends JPanel {
 	private ImageComponent background;
 	private MenuButtons start, credits, exit;
 	
-	public WindowStartScreen(Game game) {
+	public WindowStartScreen(FrameGame game) {
 		
 		this.setLayout(null);
 		

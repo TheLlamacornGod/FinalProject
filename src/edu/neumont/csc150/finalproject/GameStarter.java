@@ -6,9 +6,9 @@ public class GameStarter {
 		GameStarter startGame = new GameStarter();
 	}
 	
-	private Game game;
+	private FrameGame game;
 	
 	public GameStarter() {
-		game = new Game();
+		game = new FrameGame();
 	}
 }

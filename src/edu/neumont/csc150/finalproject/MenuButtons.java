@@ -16,7 +16,7 @@ public class MenuButtons extends JButton {
 	private boolean increase = true;
 	private Timer timer;
 	
-	public MenuButtons(Game game, int actionValue, String text) {
+	public MenuButtons(FrameGame game, int actionValue, String text) {
 
 		super(text);		
 		

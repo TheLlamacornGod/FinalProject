@@ -2,7 +2,7 @@ package edu.neumont.csc150.finalproject;
 
 import javax.swing.JFrame;
 
-public class Game extends JFrame {
+public class FrameGame extends JFrame {
 	
 	private WindowStartScreen startScreen;
 	private WindowDungeon dungeon;
@@ -12,7 +12,7 @@ public class Game extends JFrame {
 	
 	// Possible game name : "Fight or Flight Knight"
 	
-	public Game() {
+	public FrameGame() {
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 				
