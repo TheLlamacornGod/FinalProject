@@ -33,13 +33,17 @@ public class FrameGame extends JFrame {
 			this.dispose();
 			break;
 		case 1:
-			this.setContentPane(characterCreator);
+			this.setContentPane(startScreen);
 			break;
 		case 2:
-			this.setContentPane(creditsWindow);
+			this.setContentPane(characterCreator);
 			break;
 		case 3:
-			this.setContentPane(startScreen);
+			this.setContentPane(dungeon);
+			break;
+		case 4:
+			this.setContentPane(creditsWindow);
+			break;
 		default:
 			System.out.println("Invalid value was passed into buttonPressed.");
 			break;
