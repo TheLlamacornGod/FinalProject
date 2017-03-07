@@ -19,6 +19,9 @@ public class FrameGame extends JFrame {
 		startScreen = new WindowStartScreen(this);
 		startScreen.setLocation(0, 0);
 		
+		dungeon = new WindowDungeon(this);
+		dungeon.setLocation(0, 0);
+		
 		this.setSize(startScreen.getSize());
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);

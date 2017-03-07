@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 public abstract class Tile extends JPanel {
 	
 	private ImageComponent background;
+	private int coordinateX, coordinateY;
 	
 	public Tile(String location) {
 		
@@ -15,6 +16,18 @@ public abstract class Tile extends JPanel {
 		
 		this.setSize(50, 50);
 		this.add(background);
+	}
+	
+	public int getCoordinateX() {
+		return coordinateX;
+	}
+	
+	public int getCoordinateY() {
+		return coordinateY;
+	}
+	
+	public void setCoordinates(int coordinateX, int coordinateY) {
+		
 	}
 	
 }

@@ -14,7 +14,7 @@ public class WindowStartScreen extends JPanel {
 		background = new ImageComponent("Images/StartScreen.jpg");
 		background.setLocation(0, 0);
 		
-		start = new MenuButtons(game, 2, "Start");
+		start = new MenuButtons(game, 3, "Start");
 		start.setSize(110, 50);
 		start.setLocation((background.getWidth()/2) - (start.getWidth()/2), (background.getHeight()/2) - (start.getHeight()/2));
 

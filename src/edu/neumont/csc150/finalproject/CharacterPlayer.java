@@ -7,13 +7,14 @@ public class CharacterPlayer extends Character {
 	private Armor playerArmor;
 	private Weapon playerWeapon;
 	private ArrayList<Item> inventory;
+	private int health, attack, defense;
 
-	public CharacterPlayer(String location) {
+	public CharacterPlayer() {
 		
-		super("Images/CharacterPlayer");
+		super("Images/CharacterPlayer.png");
 		
-		playerArmor = new Armor("Images/StartArmor.jpg");
-		playerWeapon = new Weapon("Images/StartWeapon.jpg");
+//		playerArmor = new Armor("Images/StartArmor.jpg");
+//		playerWeapon = new Weapon("Images/StartWeapon.jpg");
 		
 		
 		inventory = new ArrayList<>();
@@ -32,6 +33,10 @@ public class CharacterPlayer extends Character {
 	
 	public void ConsumeConsumable(Potion potion) {
 		
+	}
+	
+	public void movePlayer(int x, int y) {
+		this.setLocation(this.getX() + x, this.getY() + y);
 	}
 
 }
