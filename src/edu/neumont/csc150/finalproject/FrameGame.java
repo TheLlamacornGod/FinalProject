@@ -6,8 +6,6 @@ public class FrameGame extends JFrame {
 	
 	private WindowStartScreen startScreen;
 	private WindowDungeon dungeon;
-	private WindowCredits creditsWindow;
-	private WindowCharacterCreation characterCreator;
 	private CharacterPlayer player;
 	
 	// Possible game name : "Fight or Flight Knight"
@@ -39,13 +37,7 @@ public class FrameGame extends JFrame {
 			this.setContentPane(startScreen);
 			break;
 		case 2:
-			this.setContentPane(characterCreator);
-			break;
-		case 3:
 			this.setContentPane(dungeon);
-			break;
-		case 4:
-			this.setContentPane(creditsWindow);
 			break;
 		default:
 			System.out.println("Invalid value was passed into buttonPressed.");
