@@ -9,7 +9,7 @@ public class WindowDungeon extends JPanel {
 	
 	private CharacterPlayer player;
 	private Tile[][] tiles;
-	private int x = 0, y = 0;
+	private int x = 0, y = 0, level = 1;
 	private Random rand = new Random();
 	private FrameCombat combat;
 	
@@ -24,7 +24,6 @@ public class WindowDungeon extends JPanel {
 		
 		this.setSize(1000, 1000);
 		this.add(player);
-		this.addKeyListener(player);
 		
 		generateMaze(rand.nextInt(3) + 1);
 		

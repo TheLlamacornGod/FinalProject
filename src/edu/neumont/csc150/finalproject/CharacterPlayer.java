@@ -3,20 +3,25 @@ package edu.neumont.csc150.finalproject;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
-public class CharacterPlayer extends Character implements KeyListener {
+public class CharacterPlayer extends Character {
 	
-	private Armor playerArmor;
-	private Weapon playerWeapon;
+	private Shield playerShield;
+	private Sword playerSword;
 	private ArrayList<Item> inventory;
 	private int health, attack, defense, counter, dx = 1, dy = 1;
 	private static final int counterLimit = 100;
 	private Timer timer;
+	private InputMap im;
+	private ActionMap am;
 
 
 	public CharacterPlayer() {
@@ -25,10 +30,23 @@ public class CharacterPlayer extends Character implements KeyListener {
 		
 		this.setOpaque(false);
 		
-//		this.getInputMap().put(KeyStroke.getKeyStroke("VK_UP"), "typed");
-//		this.getActionMap().put("typed", );
+		am = this.getActionMap();
+		im = this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+
 		
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UP");
+		am.put("UP", new ArrowAction("UP"));
 		
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DOWN");
+		am.put("DOWN", new ArrowAction("DOWN"));
+		
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LEFT");
+		am.put("LEFT", new ArrowAction("LEFT"));
+		
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RIGHT");
+		am.put("RIGHT", new ArrowAction("RIGHT"));
+		
+		playerSword = new Sword("Images/SwordStart.png");
 		
 		inventory = new ArrayList<>();
 		
@@ -44,52 +62,42 @@ public class CharacterPlayer extends Character implements KeyListener {
 				}
 			}
 		});
-		
 	}
 	
 	public void ConsumeConsumable(Potion potion) {
 		
 	}
 	
-	public void movePlayer() {
-		
+	public void movePlayer() {		
 		this.setLocation(this.getX() + dx, this.getY() + dy);
 	}
+	
+	public class ArrowAction extends AbstractAction {
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	    private String cmd;
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	    public ArrowAction(String cmd) {
+	        this.cmd = cmd;
+	    }
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		System.out.println("ahhhhh");
-		if (!timer.isRunning()) {
-			
-			int keyCode = e.getKeyCode();
-			if(keyCode == KeyEvent.VK_UP) {
-				dx = 0;
-				dy = -1;
-			} else if (keyCode == KeyEvent.VK_DOWN) {
-				dx = 0;
-				dy = 1;
-			} else if (keyCode == KeyEvent.VK_LEFT) {
-				dx = -1;
-				dy = 0;
-			} else if (keyCode == KeyEvent.VK_RIGHT) {
-				dx = 1;
-				dy = 0;
-			}
-			
-			timer.start();
-		}
-
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+	        if (!timer.isRunning()) {
+	        	if (cmd.equalsIgnoreCase("LEFT")) {
+	        		dx = -1;
+	        		dy = 0;
+	        	} else if (cmd.equalsIgnoreCase("RIGHT")) {
+	        		dx = 1;
+	        		dy = 0;
+	        	} else if (cmd.equalsIgnoreCase("UP")) {
+	        		dx = 0;
+	        		dy = -1;
+	        	} else if (cmd.equalsIgnoreCase("DOWN")) {
+	        		dx = 0;
+	        		dy = 1;
+	        	}
+	        	timer.start();	        	
+	        }
+	    }
 	}
 }
