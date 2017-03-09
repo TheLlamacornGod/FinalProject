@@ -21,6 +21,7 @@ public class MenuButtons extends JButton {
 		super(text);		
 		
 		this.setFont(new Font("SansSerif", 1, 30));
+		this.setForeground(Color.LIGHT_GRAY);
 		this.setContentAreaFilled(false);
 		this.setBorder(null);
 		this.setFocusPainted(false);
@@ -40,14 +41,21 @@ public class MenuButtons extends JButton {
 			
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-
-				timer.restart();
+				
+				MenuButtons.this.setForeground(Color.LIGHT_GRAY);
+				
 				timer.stop();
+				
+				size = 30;
+				increase = true;
 				MenuButtons.this.setFont(new Font("SansSerif", 1, 30));
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
+				
+				MenuButtons.this.setForeground(Color.RED.darker());
+				
 				timer = new Timer(90, new ActionListener() {
 					
 					@Override

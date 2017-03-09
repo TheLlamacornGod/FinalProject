@@ -15,7 +15,7 @@ public abstract class Character extends JPanel {
 		characterImage = new ImageComponent(location);
 		characterImage.setLocation(0, 0);
 		
-		this.setSize(50, 50);
+		this.setSize(100, 100);
 		this.add(characterImage);
 		
 	}

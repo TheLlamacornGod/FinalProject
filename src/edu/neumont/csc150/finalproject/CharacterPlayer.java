@@ -13,21 +13,10 @@ public class CharacterPlayer extends Character {
 		
 		super("Images/CharacterPlayer.png");
 		
-//		playerArmor = new Armor("Images/StartArmor.jpg");
-//		playerWeapon = new Weapon("Images/StartWeapon.jpg");
+		this.setOpaque(false);
 		
 		
 		inventory = new ArrayList<>();
-		
-	}
-	
-	public void addToInventory(Item item) {
-		if (item != null) {
-			inventory.add(item);
-		}
-	}
-	
-	public void EquipEquipment(Equipment equipment) {
 		
 	}
 	

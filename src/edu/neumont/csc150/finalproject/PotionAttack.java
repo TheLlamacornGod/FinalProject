@@ -2,8 +2,8 @@ package edu.neumont.csc150.finalproject;
 
 public class PotionAttack extends Potion {
 	
-	public PotionAttack(String location) {
-		super(location);
+	public PotionAttack() {
+		super("Images/PotionAttack.png");
 	}
 
 	@Override
