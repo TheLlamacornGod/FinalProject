@@ -6,9 +6,17 @@ public class TileDoor extends Tile {
 	
 	public TileDoor() {
 		
-		super("Images/TileDoor");
+		super("Images/TileDoorLocked.png");
 		
 		locked = true;
 	}
 
+	
+	public void unlockDoor(Key key) {
+		if (key != null) {
+			changeImage("Images/TileDoorUnlocked.png");
+		}
+	}
+	
+	
 }

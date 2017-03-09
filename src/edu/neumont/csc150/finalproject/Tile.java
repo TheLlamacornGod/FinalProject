@@ -30,4 +30,9 @@ public abstract class Tile extends JPanel {
 		
 	}
 	
+	public void changeImage(String location) {
+		background = new ImageComponent(location);
+		this.repaint();
+	}
+	
 }
