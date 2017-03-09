@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 public class CharacterPlayer extends Character implements KeyListener {
@@ -22,6 +24,10 @@ public class CharacterPlayer extends Character implements KeyListener {
 		super("Images/CharacterPlayer.png");
 		
 		this.setOpaque(false);
+		
+//		this.getInputMap().put(KeyStroke.getKeyStroke("VK_UP"), "typed");
+//		this.getActionMap().put("typed", );
+		
 		
 		
 		inventory = new ArrayList<>();

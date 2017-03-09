@@ -4,14 +4,25 @@ import javax.swing.JFrame;
 
 public class FrameCombat extends JFrame {
 	
-	public FrameCombat() {
+	private WindowCombat combat;
+	
+	public FrameCombat(CharacterPlayer player) {
 		
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLayout(null);
+		
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		
+		
+		combat = new WindowCombat(player);
+		combat.setLocation(0, 0);
 		
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		
+		this.setContentPane(combat);
+		
 		this.setVisible(true);
+		this.setSize(1000, 500);
 	}
 	
 	public void buttonPressed(int button) {

@@ -11,6 +11,7 @@ public class WindowDungeon extends JPanel {
 	private Tile[][] tiles;
 	private int x = 0, y = 0;
 	private Random rand = new Random();
+	private FrameCombat combat;
 	
 	public WindowDungeon(FrameGame game) {
 		
@@ -26,6 +27,8 @@ public class WindowDungeon extends JPanel {
 		this.addKeyListener(player);
 		
 		generateMaze(rand.nextInt(3) + 1);
+		
+		combat = new FrameCombat(player);
 		
 	}
 	
