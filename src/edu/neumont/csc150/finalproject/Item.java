@@ -11,6 +11,8 @@ public abstract class Item extends JPanel {
 		this.setLayout(null);
 		
 		item = new ImageComponent(location);
+		this.setOpaque(false);
+		this.setSize(100, 100);
 		item.setLocation(0, 0);
 		
 		this.add(item);

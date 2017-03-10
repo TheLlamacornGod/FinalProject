@@ -3,6 +3,7 @@ package edu.neumont.csc150.finalproject;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.AbstractAction;
@@ -15,14 +16,16 @@ import javax.swing.Timer;
 public class WindowDungeon extends JPanel {
 	
 	private CharacterPlayer player;
+	private Key key;
 	private Tile[][] tiles;
-	private int x = 0, y = 0, level = 1, counter, playerX, playerY;
+	private int x = 0, y = 0, level = 1, counter, playerX, playerY, keyX, keyY;
 	private Random rand = new Random();
 	private FrameCombat combat;
 	private static final int counterLimit = 100;
 	private Timer timer;
 	private InputMap im;
 	private ActionMap am;
+	private ArrayList<Item> playerInventory;
 	
 	public WindowDungeon(FrameGame game) {
 		
@@ -38,7 +41,6 @@ public class WindowDungeon extends JPanel {
 		this.setSize(1000, 1000);
 		this.add(player);
 		
-//		generateMaze(rand.nextInt(3) + 1);
 		generateMaze(2);
 				
 		am = player.getActionMap();
@@ -77,6 +79,25 @@ public class WindowDungeon extends JPanel {
 						timer.stop();
 					}
 					
+					if (playerX == keyX && playerY == keyY) {
+						
+						key.setVisible(false);
+						player.addKey(key);
+					}
+					
+					if (tiles[playerX + 1][playerY] instanceof TileDoor){
+						
+						playerInventory = player.getInventory();
+						
+						if (playerInventory.contains(key)) {
+							
+							player.removeKey(key);
+							
+							((TileDoor)tiles[playerX + 1][playerY]).unlockDoor();
+							
+						}
+					}
+					
 					counter = 0;
 					player.setMoveDirection(0, 0);
 				}
@@ -88,6 +109,19 @@ public class WindowDungeon extends JPanel {
 		if (rand.nextInt(100) + 1 * level < 20) {
 			combat = new FrameCombat(player);
 		}
+	}
+	
+	private void generateKey()	{
+		do
+		{
+			keyX = rand.nextInt(8) + 1;
+			keyY = rand.nextInt(8) + 1;
+			if (tiles[keyX][keyY] instanceof TileFloor) {
+				key = new Key();
+				key.setLocation(keyX * 100, keyY * 100);
+				this.add(key);
+			}
+		} while(key == null);
 	}
 	
 	private void generateMaze(int maze) {
@@ -163,6 +197,8 @@ public class WindowDungeon extends JPanel {
 			}
 			
 		} while (!path);
+
+		generateKey();
 		
 		for (x = 0; x < 10; x++) {
 			for (y = 0; y < 10; y++) {
@@ -173,6 +209,7 @@ public class WindowDungeon extends JPanel {
 				}
 			}
 		}
+		
 		
 		reimageTiles();
 		

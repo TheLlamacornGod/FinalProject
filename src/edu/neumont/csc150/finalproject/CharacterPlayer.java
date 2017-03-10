@@ -37,6 +37,18 @@ public class CharacterPlayer extends Character {
 		
 	}
 	
+	public void addKey(Key key){
+		inventory.add(key);
+	}
+	
+	public void removeKey(Key key) {
+		this.remove(key);
+	}
+	
+	public ArrayList<Item> getInventory() {
+		return inventory;
+	}
+	
 	public void setMoveDirection(int dx, int dy) {
 		this.dx = dx;
 		this.dy = dy;
