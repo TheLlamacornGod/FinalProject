@@ -115,6 +115,7 @@ public class WindowDungeon extends JPanel {
 				this.add(tiles[x][y]);
 			}
 		}
+		reimageTiles();
 	}
 	
 	private void maze2() {
@@ -134,7 +135,6 @@ public class WindowDungeon extends JPanel {
 		{
 			tiles[x][y] = new TileFloor();
 			tiles[x][y].setLocation(100 * x, 100 * y);
-			this.add(tiles[x][y]);
 			
 			if (x == 8 && y == 4) {
 				path = true;
@@ -168,13 +168,14 @@ public class WindowDungeon extends JPanel {
 			for (y = 0; y < 10; y++) {
 				if (tiles[x][y] == null) {
 					tiles[x][y] = new TileWall();
-					tiles[x][y].setLocation(100 * x, 100 * y);
-					this.add(tiles[x][y]);					
+					tiles[x][y].setLocation(100 * x, 100 * y);		
+					this.add(tiles[x][y]);
 				}
 			}
 		}
 		
 		reimageTiles();
+		
 	}
 	
 	private void maze3() {
@@ -185,6 +186,7 @@ public class WindowDungeon extends JPanel {
 				this.add(tiles[x][y]);
 			}
 		}
+		reimageTiles();
 	}
 	
 	public void reimageTiles() {
@@ -281,6 +283,42 @@ public class WindowDungeon extends JPanel {
 						((TileFloor)tiles[x][y]).changeFloor(0);
 						
 					}
+					
+					if (x == 1) {
+						
+						if (tiles[x - 1][y] instanceof TileWall) {
+							
+							((TileWall)tiles[x - 1][y]).changeWall(10);
+							
+						}
+						
+					} else if (x == 8) {
+						
+						if (tiles[x + 1][y] instanceof TileWall) {
+							
+							((TileWall)tiles[x + 1][y]).changeWall(11);
+							
+						}
+						
+					}
+					
+					if (y == 1) {
+						
+						if (tiles[x][y - 1] instanceof TileWall) {
+							
+							((TileWall)tiles[x][y - 1]).changeWall(12);
+							
+						}
+						
+					} else if (y == 8) {
+						
+						if (tiles[x][y + 1] instanceof TileWall) {
+							
+							((TileWall)tiles[x][y + 1]).changeWall(1);
+							
+						}
+						
+					}
 						
 				} else if (tiles[x][y] instanceof TileWall) {
 					
@@ -327,11 +365,12 @@ public class WindowDungeon extends JPanel {
 						
 					}
 					
-				} else {
+				} else if (tiles[x][y] == null) {
 					
-//					tiles[x][y].changeImage("Images/TileFloor.png");
+					tiles[x][y] = new TileWall();
 					
 				}
+				this.add(tiles[x][y]);
 			}
 		}
 	}

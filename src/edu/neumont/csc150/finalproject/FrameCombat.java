@@ -10,7 +10,7 @@ public class FrameCombat extends JFrame {
 		
 		this.setLayout(null);
 		
-		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		
 		combat = new WindowCombat(player, this);
