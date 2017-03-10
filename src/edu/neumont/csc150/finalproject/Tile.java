@@ -19,21 +19,14 @@ public abstract class Tile extends JPanel {
 		this.add(background);
 	}
 	
-	public int getCoordinateX() {
-		return coordinateX;
-	}
-	
-	public int getCoordinateY() {
-		return coordinateY;
-	}
-	
-	public void setCoordinates(int coordinateX, int coordinateY) {
-		
-	}
-	
 	public void changeImage(String location) {
+		
+		this.remove(background);
+		
 		background = new ImageComponent(location);
-		this.repaint();
+		background.setLocation(0, 0);
+		
+		this.add(background);
 	}
 	
 }

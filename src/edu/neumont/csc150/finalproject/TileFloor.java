@@ -6,18 +6,6 @@ public class TileFloor extends Tile {
 		super("Images/TileFloorStairs.png");
 	}
 	
-	@Override
-	public void setCoordinates(int coordinateX, int coordinateY) {
-		if (coordinateX > 0 && coordinateX < 20) {
-//			this.coordinateX = coordinateX;
-//			if ((coordinateX >= 8 && coordinateX <= 11) && (coordinateY > 2 && coordinateY < 17)) {
-//				this.coordinateY = coordinateY;
-//			} else if ((coordinateX < 7 || coordinateX > 13) && (coordinateY > 1 && coordinateY < 17)) {
-//				this.coordinateY = coordinateY;
-//			}
-		}
-	}
-	
 	public void changeFloor(int floor) {
 		switch(floor) {
 		case 1:
@@ -63,10 +51,10 @@ public class TileFloor extends Tile {
 			changeImage("Images/TileFloor3LightsTop.png");
 			break;
 		case 15:
-			changeImage("Images/TileFloor3LightsLeft.png");
+			changeImage("Images/TileFloor.png");
 			break;
 		default:
-			changeImage("Images/TileFloorStairs.png");
+			changeImage("Images/TileFloor.png");
 		}
 	}
 	
