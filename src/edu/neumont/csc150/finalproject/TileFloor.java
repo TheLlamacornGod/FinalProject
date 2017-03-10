@@ -3,7 +3,7 @@ package edu.neumont.csc150.finalproject;
 public class TileFloor extends Tile {
 
 	public TileFloor() {
-		super("Images/TileFloorStairs.png");
+		super("Images/TileFloor.png");
 	}
 	
 	public void changeFloor(int floor) {
@@ -51,7 +51,7 @@ public class TileFloor extends Tile {
 			changeImage("Images/TileFloor3LightsTop.png");
 			break;
 		case 15:
-			changeImage("Images/TileFloor.png");
+			changeImage("Images/TileFloorStairs.png");
 			break;
 		default:
 			changeImage("Images/TileFloor.png");

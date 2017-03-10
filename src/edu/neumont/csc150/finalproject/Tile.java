@@ -24,6 +24,7 @@ public abstract class Tile extends JPanel {
 		this.remove(background);
 		
 		background = new ImageComponent(location);
+		System.out.println(location);
 		background.setLocation(0, 0);
 		
 		this.add(background);

@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class MenuButtons extends JButton {
@@ -16,7 +17,7 @@ public class MenuButtons extends JButton {
 	private boolean increase = true;
 	private Timer timer;
 	
-	public MenuButtons(FrameGame game, int actionValue, String text) {
+	public MenuButtons(JFrame frame, int actionValue, String text) {
 
 		super(text);		
 		
@@ -81,7 +82,13 @@ public class MenuButtons extends JButton {
 			
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				game.buttonPressed(actionValue);
+				if (frame instanceof FrameGame) {
+					FrameGame game = (FrameGame)frame; 
+					game.buttonPressed(actionValue);					
+				} else if (frame instanceof FrameCombat) {
+					FrameCombat combat = (FrameCombat)frame; 
+					combat.buttonPressed(actionValue);
+				}
 			}
 		});
 	}

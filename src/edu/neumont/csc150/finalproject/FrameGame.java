@@ -1,5 +1,8 @@
 package edu.neumont.csc150.finalproject;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 
 public class FrameGame extends JFrame {
@@ -26,18 +29,20 @@ public class FrameGame extends JFrame {
 		this.setContentPane(startScreen);
 		
 		this.setVisible(true);
+		
 	}
 	
 	public void buttonPressed(int button) {
 		switch (button) {
 		case 0:
-			this.dispose();
+			System.exit(0);
 			break;
 		case 1:
 			this.setContentPane(startScreen);
 			break;
 		case 2:
 			this.setContentPane(dungeon);
+			dungeon.repaint();
 			break;
 		default:
 			System.out.println("Invalid value was passed into buttonPressed.");

@@ -13,7 +13,7 @@ public class FrameCombat extends JFrame {
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		
-		combat = new WindowCombat(player);
+		combat = new WindowCombat(player, this);
 		combat.setLocation(0, 0);
 		
 		this.setResizable(false);
@@ -26,6 +26,18 @@ public class FrameCombat extends JFrame {
 	}
 	
 	public void buttonPressed(int button) {
-		
+		switch(button) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			this.dispose();
+			break;
+		case 3:
+			break;
+		default:
+			break;
+		}
 	}
 }

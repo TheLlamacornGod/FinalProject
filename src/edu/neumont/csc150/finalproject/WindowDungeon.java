@@ -40,9 +40,7 @@ public class WindowDungeon extends JPanel {
 		
 //		generateMaze(rand.nextInt(3) + 1);
 		generateMaze(2);
-		
-		combat = new FrameCombat(player);
-		
+				
 		am = player.getActionMap();
 		im = player.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
 
@@ -66,7 +64,19 @@ public class WindowDungeon extends JPanel {
 				player.movePlayer();
 				counter++;
 				if (counter >= counterLimit) {
-					timer.stop();
+					
+					if (!(combat == null)) {
+					
+						if(!combat.isVisible()) {
+							
+							timer.stop();						
+						}		
+						
+					} else {
+						
+						timer.stop();
+					}
+					
 					counter = 0;
 					player.setMoveDirection(0, 0);
 				}
@@ -74,41 +84,10 @@ public class WindowDungeon extends JPanel {
 		});
 	}
 	
-	public class ArrowAction extends AbstractAction {
-
-	    private String cmd;
-
-	    public ArrowAction(String cmd) {
-	        this.cmd = cmd;
-	    }
-
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-	        if (!timer.isRunning()) {
-	        	if (cmd.equalsIgnoreCase("LEFT")) {
-	        		if (tiles[playerX - 1][playerY] instanceof TileFloor) {
-	        			player.setMoveDirection(-1, 0);
-	        			playerX--;
-	        		}
-	        	} else if (cmd.equalsIgnoreCase("RIGHT")) {
-	        		if (tiles[playerX + 1][playerY] instanceof TileFloor) {
-	        			player.setMoveDirection(1, 0);
-	        			playerX++;
-	        		}
-	        	} else if (cmd.equalsIgnoreCase("UP")) {
-	        		if (tiles[playerX][playerY - 1] instanceof TileFloor) {
-	        			player.setMoveDirection(0, -1);
-	        			playerY--;
-	        		}
-	        	} else if (cmd.equalsIgnoreCase("DOWN")) {
-	        		if (tiles[playerX][playerY + 1] instanceof TileFloor) {
-	        			player.setMoveDirection(0, 1);
-	        			playerY++;
-	        		}
-	        	}
-	        	timer.start();	        	
-	        }
-	    }
+	private void startCombat() {
+		if (rand.nextInt(100) + 1 * level < 20) {
+			combat = new FrameCombat(player);
+		}
 	}
 	
 	private void generateMaze(int maze) {
@@ -124,6 +103,7 @@ public class WindowDungeon extends JPanel {
 			break;
 		default:
 			maze1();
+			break;
 		}
 	}
 
@@ -144,7 +124,7 @@ public class WindowDungeon extends JPanel {
 		tiles[0][4] = new TileFloor();
 		tiles[0][4].setLocation(0, 400);
 		this.add(tiles[0][4]);
-		((TileFloor)tiles[0][4]).changeFloor(5);
+		((TileFloor)tiles[0][4]).changeFloor(15);
 		
 		tiles[9][4] = new TileDoor();
 		tiles[9][4].setLocation(900, 400);
@@ -209,10 +189,9 @@ public class WindowDungeon extends JPanel {
 	
 	public void reimageTiles() {
 		
-		int changes = 0;
-		for (x = 1; x < 10; x++) {
+		for (x = 1; x < 9; x++) {
 			
-			for (y = 1; y < 10; y++) {
+			for (y = 1; y < 9; y++) {
 				
 				if (tiles[x][y] instanceof TileFloor) {
 										
@@ -223,17 +202,14 @@ public class WindowDungeon extends JPanel {
 							if (tiles[x][y + 1] instanceof TileWall) {					//RLBottomWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(11);					//RLB
-								changes++;
 								
 							} else if (tiles[x][y - 1] instanceof TileWall) {			//RLTopWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(14);					//RLT
-								changes++;
 								
 							} else {													//RLeftWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(6);					//RL
-								changes++;
 								
 							}
 							
@@ -243,24 +219,20 @@ public class WindowDungeon extends JPanel {
 							if (tiles[x][y + 1] instanceof TileWall) {					//RTBottomWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(13);					//RTB
-								changes++;
 								
 							} else {													//RTopWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(9);					//RT
-								changes++;
 								
 							}
 							
 						} else if (tiles[x][y + 1] instanceof TileWall) {			//RBottomWall
 						
 							((TileFloor)tiles[x][y]).changeFloor(8);					//RB
-							changes++;
 							
 						} else {													//RightWall
 							
 							((TileFloor)tiles[x][y]).changeFloor(3);					//R
-							changes++;
 							
 						}
 						
@@ -271,24 +243,20 @@ public class WindowDungeon extends JPanel {
 							if (tiles[x][y - 1] instanceof TileWall) {					//LBTopWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(12);					//LBT
-								changes++;
 								
 							} else {													//LBottomWall
 								
 								((TileFloor)tiles[x][y]).changeFloor(5);					//LB
-								changes++;
 								
 							}
 							
 						} else if (tiles[x][y - 1] instanceof TileWall) {			//LTopWall
 							
 							((TileFloor)tiles[x][y]).changeFloor(7);					//LT
-							changes++;
 							
 						} else {													//LeftWall
 							
 							((TileFloor)tiles[x][y]).changeFloor(2);					//L
-							changes++;
 							
 						}
 						
@@ -297,32 +265,132 @@ public class WindowDungeon extends JPanel {
 						if (tiles[x][y - 1] instanceof TileWall) {					//BTopWall
 							
 							((TileFloor)tiles[x][y]).changeFloor(10);					//BT
-							changes++;
 							
 						} else {													//BWall
 							
 							((TileFloor)tiles[x][y]).changeFloor(1);				//B
-							changes++;
 							
 						}
 						
 					} else if (tiles[x][y - 1] instanceof TileWall) {				//
 						
 						((TileFloor)tiles[x][y]).changeFloor(4);
-						changes++;
 						
 					} else {
 						
-						((TileFloor)tiles[x][y]).changeFloor(15);
-						changes++;
+						((TileFloor)tiles[x][y]).changeFloor(0);
 						
 					}
 						
 				} else if (tiles[x][y] instanceof TileWall) {
 					
+					if (tiles[x - 1][y] instanceof TileFloor) {
+						
+						if (tiles[x][y - 1] instanceof TileFloor) {
+							
+							((TileWall)tiles[x][y]).changeWall(4);
+							
+						} else if (tiles[x][y + 1] instanceof TileFloor) {
+							
+							((TileWall)tiles[x][y]).changeWall(5);
+							
+						} else {
+							
+							((TileWall)tiles[x][y]).changeWall(11);
+							
+						}
+						
+					} else if (tiles[x + 1][y] instanceof TileFloor) {
+						
+						if (tiles[x][y - 1] instanceof TileFloor) {
+							
+							((TileWall)tiles[x][y]).changeWall(2);
+							
+						} else if (tiles[x][y + 1] instanceof TileFloor) {
+							
+							((TileWall)tiles[x][y]).changeWall(3);
+							
+						} else {
+							
+							((TileWall)tiles[x][y]).changeWall(10);
+							
+						}
+						
+					} else if (tiles[x][y - 1] instanceof TileFloor) {
+							
+							((TileWall)tiles[x][y]).changeWall(1);
+						
+					}  else if (tiles[x][y + 1] instanceof TileFloor) {
+						
+						
+							((TileWall)tiles[x][y]).changeWall(12);
+						
+					}
+					
+				} else {
+					
+//					tiles[x][y].changeImage("Images/TileFloor.png");
+					
 				}
 			}
 		}
-		System.out.println(changes);
+	}
+	
+	public class ArrowAction extends AbstractAction {
+
+	    private String cmd;
+
+	    public ArrowAction(String cmd) {
+	        this.cmd = cmd;
+	    }
+
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+	        
+	    	if (!timer.isRunning()) {
+	        	
+	    		if (cmd.equalsIgnoreCase("LEFT")) {
+	        		
+	    			if (tiles[playerX - 1][playerY] instanceof TileFloor) {
+	        		
+	    				player.setMoveDirection(-1, 0);
+	        			playerX--;
+	        			startCombat();
+	        		}
+	    			
+	        	} else if (cmd.equalsIgnoreCase("RIGHT")) {
+	        		
+	        		if (tiles[playerX + 1][playerY] instanceof TileFloor) {
+	        			
+	        			player.setMoveDirection(1, 0);
+	        			playerX++;
+	        			startCombat();
+	        		}
+	        		
+	        	} else if (cmd.equalsIgnoreCase("UP")) {
+	        		
+	        		if (tiles[playerX][playerY - 1] instanceof TileFloor) {
+	        			
+	        			player.setMoveDirection(0, -1);
+	        			playerY--;
+	        			startCombat();
+	        		}
+	        		
+	        	} else if (cmd.equalsIgnoreCase("DOWN")) {
+	        		
+	        		if (tiles[playerX][playerY + 1] instanceof TileFloor) {
+	        		
+	        			player.setMoveDirection(0, 1);
+	        			playerY++;
+	        			startCombat();
+	        		}
+	        	}
+	    		
+	        	timer.start();	        	
+	        }
+	    }
+
 	}
 }
+
+
