@@ -1,4 +1,4 @@
-package edu.neumont.csc150.finalproject;
+package edu.neumont.csc150.finalproject.group21;
 
 public abstract class Equipment extends Item implements Equip {
 	
