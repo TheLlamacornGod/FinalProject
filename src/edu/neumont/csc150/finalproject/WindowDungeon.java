@@ -17,6 +17,9 @@ public class WindowDungeon extends JPanel {
 	
 	private CharacterPlayer player;
 	private Key key;
+	
+	//@@@@  “A multi-dimensional array (>= 2 dimensions)"
+	
 	private Tile[][] tiles;
 	private int x = 0, y = 0, level = 1, counter, playerX, playerY, keyX, keyY;
 	private Random rand = new Random();
